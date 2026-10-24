@@ -1,0 +1,74 @@
+/* A minimal stand-in for Obsidian's app.css, enough to preview the theme outside
+   Obsidian: it maps the CSS variables the theme sets onto mock elements the way
+   the app does, with neutral defaults the theme is expected to override. */
+
+body {
+  --font-text: var(--font-text-theme, sans-serif);
+  --font-interface: var(--font-interface-theme, sans-serif);
+  --font-monospace: var(--font-monospace-theme, monospace);
+  --font-ui-smaller: 12px;
+  --size-4-2: 8px;
+  --size-4-3: 12px;
+  --nav-item-color: var(--text-muted);
+  --nav-item-background-active: var(--background-modifier-hover);
+  --callout-color: 8, 109, 221;
+  --tag-background: rgba(138, 92, 245, 0.1);
+  --tag-border-width: 0;
+  --tag-radius: 2em;
+  --callout-radius: 4px;
+  --radius-s: 4px;
+  --code-radius: 4px;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  font-family: var(--font-interface);
+  font-size: 14px;
+  background-color: var(--background-primary);
+  color: var(--text-normal);
+  caret-color: var(--caret-color);
+}
+::selection { background-color: var(--text-selection); }
+
+.ribbon { width: 44px; background: var(--background-secondary); border-right: 1px solid var(--background-modifier-border); }
+.sidebar { width: 240px; background: var(--background-secondary); border-right: 1px solid var(--background-modifier-border); padding: 12px 8px; }
+.nav-folder-title { color: var(--text-muted); padding: 4px 8px; font-size: 13px; }
+.nav-file-title { color: var(--nav-item-color); padding: 4px 8px 4px 22px; font-size: 13px; border-radius: var(--radius-s); }
+.nav-file-title.is-active { background-color: var(--nav-item-background-active); color: var(--nav-item-color-active); }
+.main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.workspace-tab-header-container { display: flex; background: var(--background-secondary); border-bottom: 1px solid var(--background-modifier-border); }
+.workspace-tab-header { padding: 8px 16px; color: var(--text-muted); font-size: 13px; border-top: 2px solid transparent; border-radius: var(--radius-s) var(--radius-s) 0 0; }
+.workspace-tab-header.is-active { background: var(--background-primary); color: var(--text-normal); }
+.panes { flex: 1; display: flex; overflow: hidden; }
+.view-content { flex: 1; overflow: hidden; padding: 24px 48px; border-right: 1px solid var(--background-modifier-border); }
+.view-label { font-family: var(--font-monospace); font-size: 11px; color: var(--text-muted); margin-bottom: 12px; }
+.status-bar { position: fixed; right: 0; bottom: 0; padding: 4px 12px; color: var(--text-muted); background: var(--background-secondary); border-top: 1px solid var(--background-modifier-border); }
+
+.inline-title { font-family: var(--font-text); font-size: var(--inline-title-size); font-weight: var(--inline-title-weight); color: var(--inline-title-color); margin: 0 0 16px; }
+.markdown-rendered, .markdown-source-view { font-family: var(--font-text); font-size: 15px; line-height: 1.6; }
+.markdown-rendered p { margin: 0 0 var(--p-spacing); }
+.markdown-rendered h1 { font-size: var(--h1-size); font-weight: var(--h1-weight); color: var(--h1-color); }
+.markdown-rendered h2 { font-size: var(--h2-size); font-weight: var(--h2-weight); color: var(--h2-color); }
+.markdown-rendered h3 { font-size: var(--h3-size); font-weight: var(--h3-weight); color: var(--h3-color); }
+.markdown-rendered h4 { font-size: var(--h4-size); font-weight: var(--h4-weight); }
+.markdown-rendered strong { color: var(--bold-color); }
+a.internal-link { color: var(--link-color); text-decoration: underline; }
+a.internal-link.is-unresolved { color: var(--link-unresolved-color); opacity: var(--link-unresolved-opacity); text-decoration-style: var(--link-unresolved-decoration-style); text-decoration-color: var(--link-unresolved-decoration-color); }
+a.external-link { color: var(--link-external-color); text-decoration: underline; }
+.tag { background-color: var(--tag-background); border: var(--tag-border-width) solid var(--tag-border-color); color: var(--tag-color); border-radius: var(--tag-radius); padding: 0.1em 0.5em; text-decoration: none; }
+mark { background-color: var(--text-highlight-bg); color: var(--text-normal); }
+blockquote { margin: 0 0 var(--p-spacing); padding-left: 16px; border-left: var(--blockquote-border-thickness) solid var(--blockquote-border-color); color: var(--blockquote-color); font-style: var(--blockquote-font-style); }
+hr { border: none; border-top: var(--hr-thickness) solid var(--hr-color); margin: 24px 0; }
+code { font-family: var(--font-monospace); background: var(--code-background); border-radius: var(--code-radius); padding: 0.1em 0.3em; font-size: 0.9em; }
+ul.contains-task-list { list-style: none; padding-left: 0; }
+input[type=checkbox] { appearance: none; width: 14px; height: 14px; border: 1px solid var(--text-muted); border-radius: var(--checkbox-radius); vertical-align: -2px; margin-right: 8px; }
+input[type=checkbox]:checked { background: var(--checkbox-color); border-color: var(--checkbox-color); }
+.callout { border-radius: var(--callout-radius); background-color: rgba(var(--callout-color), 0.1); padding: 10px 14px; margin: 0 0 var(--p-spacing); }
+.callout-title { color: rgb(var(--callout-color)); font-weight: 600; margin-bottom: 4px; }
+.metadata-container { margin-bottom: 20px; }
+.metadata-properties-heading { font-size: 11px; margin-bottom: 6px; }
+.metadata-property { display: flex; gap: 16px; font-size: 13px; padding: 2px 0; }
+.metadata-property-key { width: 110px; font-size: 11px; }
+.cm-line { padding: 1px 0; }
+.cm-highlight { background-color: var(--text-highlight-bg); }
+.cm-cursor { display: inline-block; width: 0; height: 1.1em; border-left: 2px solid var(--caret-color); vertical-align: text-bottom; }
+.HyperMD-header-2 { font-size: var(--h2-size); font-weight: var(--h2-weight); color: var(--h2-color); }

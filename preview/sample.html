@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bureau preview</title>
+<!-- Mock of Obsidian's DOM to preview theme.css. ?mode=dark (default) or ?mode=light. -->
+<link rel="stylesheet" href="obsidian-base.css">
+<link rel="stylesheet" href="../theme.css">
+<script>
+  document.documentElement.dataset.mode = new URLSearchParams(location.search).get('mode') || 'dark';
+  addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add(document.documentElement.dataset.mode === 'light' ? 'theme-light' : 'theme-dark');
+  });
+</script>
+</head>
+<body>
+<div class="ribbon"></div>
+
+<div class="sidebar">
+  <div class="nav-folder-title">▾ Cases</div>
+  <div class="nav-file-title">Altered World Events</div>
+  <div class="nav-file-title is-active">Hotline</div>
+  <div class="nav-file-title">Objects of Power</div>
+  <div class="nav-folder-title">▾ Events</div>
+  <div class="nav-file-title">2026-10-24-Board briefing</div>
+  <div class="nav-file-title">2026-10-27-Panopticon review</div>
+</div>
+
+<div class="main">
+  <div class="workspace-tab-header-container">
+    <div class="workspace-tab-header is-active">Hotline</div>
+    <div class="workspace-tab-header">Objects of Power</div>
+  </div>
+
+  <div class="panes">
+    <div class="view-content">
+      <div class="view-label">READING VIEW</div>
+      <div class="inline-title">Hotline</div>
+
+      <div class="metadata-container">
+        <div class="metadata-properties-heading">Properties</div>
+        <div class="metadata-property"><div class="metadata-property-key">clearance</div><div>Director</div></div>
+        <div class="metadata-property"><div class="metadata-property-key">sector</div><div>Executive</div></div>
+        <div class="metadata-property"><div class="metadata-property-key">created</div><div>2026-10-24</div></div>
+      </div>
+
+      <div class="markdown-rendered">
+        <p>The phone rings in the <a class="internal-link">Director's office</a>. Cross-reference
+          <a class="internal-link is-unresolved">Threshold Kids</a> and the
+          <a class="external-link">public archive</a>. Tagged <a class="tag">#awe</a> <a class="tag">#classified</a>.</p>
+        <h2>Containment</h2>
+        <p>The caller identified the location as <mark>Ordinary, Wisconsin</mark>. <strong>Do not</strong> answer after midnight.</p>
+        <div class="callout" data-callout="warning"><div class="callout-title">Warning</div>Hiss resonance detected on sub-level 4.</div>
+        <div class="callout" data-callout="note"><div class="callout-title">Note</div>Report filed with the <code>Panopticon</code>.</div>
+        <div class="callout" data-callout="tip"><div class="callout-title">Tip</div>Ask the Janitor.</div>
+        <h3>Follow-ups</h3>
+        <ul class="contains-task-list">
+          <li><input type="checkbox" checked>Log the call</li>
+          <li><input type="checkbox">Brief the Board</li>
+        </ul>
+        <blockquote>"The Oldest House is a Place of Power."</blockquote>
+        <hr>
+        <h4>Appendix A</h4>
+      </div>
+    </div>
+
+    <div class="view-content markdown-source-view is-live-preview">
+      <div class="view-label">EDITING (LIVE PREVIEW)</div>
+      <div class="cm-line HyperMD-header-2"><span class="cm-header">Containment</span></div>
+      <div class="cm-line">The caller identified the location as <span class="cm-highlight">Ordinary, Wisconsin<span class="cm-cursor"></span></span>.</div>
+      <div class="cm-line">Tagged <span class="cm-hashtag tag">#awe</span></div>
+    </div>
+  </div>
+  <div class="status-bar">142 words · 811 characters</div>
+</div>
+</body>
+</html>
