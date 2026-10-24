@@ -53,7 +53,7 @@ Heading ladder (the title-card look):
 ## Structure
 - Corner shapes are Obsidian's own: the theme sets no radius. (Changed after mobile testing:
   square overrides clashed with the app's rounded mobile UI. Originally: radius 0 everywhere.)
-  Exception, desktop only: tabs (without the active tab's curved feet) and the icons at the
+  Exceptions: tags are square stamps on every platform; desktop only: tabs (without the active tab's curved feet) and the icons at the
   top of the sidebars and tab bar are square.
 - No drop shadows; separation comes from hairline rules and the three ink levels.
 - Readable line width stays Obsidian's default; generous paragraph spacing.

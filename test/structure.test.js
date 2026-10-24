@@ -21,6 +21,10 @@ test('fonts', () => {
   assert.equal(body['--font-interface-theme'], body['--font-text-theme']);
 });
 
+test('tags are square stamps on every platform', () => {
+  for (const mode of ['body.theme-dark', 'body.theme-light']) assert.equal(varsFor(css, mode)['--tag-radius'], '0', mode);
+});
+
 test('native corner shapes, except square tabs and sidebar icons on desktop', () => {
   // Obsidian (mobile especially) draws its own rounded UI; square overrides clashed with
   // it. The one exception: on desktop, tabs and the icons at the top of the sidebars.
@@ -29,6 +33,7 @@ test('native corner shapes, except square tabs and sidebar icons on desktop', ()
   for (const r of rules) {
     for (const [k, v] of declarations(r.body)) {
       if (!/radius/.test(k)) continue;
+      if (k === '--tag-radius') continue; // square stamps on every platform, checked below
       for (const sel of r.selector.split(',').map((x) => x.trim())) {
         assert.match(sel, allowed, `${sel} sets ${k}`);
       }

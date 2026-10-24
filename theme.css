@@ -230,6 +230,8 @@ body.theme-light {
   --tag-border-color-hover: var(--bureau-red);
   --tag-padding-x: 0.4em;
   --tag-padding-y: 0;
+  /* Square stamps on every platform (the one corner shape set everywhere). */
+  --tag-radius: 0;
 
   /* Highlights: readable while editing; redacted in reading view (below) */
   --text-highlight-bg: var(--background-modifier-hover);
