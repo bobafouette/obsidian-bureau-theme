@@ -202,3 +202,156 @@ body {
   font-family: var(--font-monospace);
   font-size: var(--font-ui-smaller);
 }
+
+/* ------------------------------------------------------------------ bureau details */
+
+body {
+  /* Tags: classification stamps */
+  --tag-background: transparent;
+  --tag-background-hover: transparent;
+  --tag-border-width: 1px;
+  --tag-border-color: var(--bureau-red);
+  --tag-border-color-hover: var(--bureau-red);
+
+  /* Highlights: readable while editing; redacted in reading view (below) */
+  --text-highlight-bg: var(--background-modifier-hover);
+
+  /* Blockquotes */
+  --blockquote-border-thickness: 2px;
+  --blockquote-border-color: var(--text-muted);
+  --blockquote-font-style: normal;
+  --blockquote-color: var(--text-muted);
+  --blockquote-background-color: transparent;
+
+  /* Horizontal rule */
+  --hr-color: var(--background-modifier-border);
+  --hr-thickness: 1px;
+
+  /* Graph: greys, with red for the current note and tags */
+  --graph-node: var(--text-muted);
+  --graph-node-unresolved: var(--background-modifier-border-hover);
+  --graph-node-focused: var(--bureau-red);
+  --graph-node-tag: var(--bureau-red);
+  --graph-node-attachment: var(--text-muted);
+  --graph-line: var(--background-modifier-border);
+  --graph-text: var(--text-normal);
+}
+
+.tag,
+.cm-hashtag {
+  font-family: var(--font-monospace);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Properties: a case-file header. */
+.metadata-container {
+  border: 1px solid var(--background-modifier-border);
+  padding: var(--size-4-2) var(--size-4-3);
+}
+
+.metadata-properties-heading,
+.metadata-property-key {
+  font-family: var(--font-monospace);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+/* Callouts: Bureau memos. Every type maps to the palette, never a rainbow. */
+.callout {
+  --callout-color: var(--bureau-grey-rgb);
+  background-color: transparent;
+  border: 1px solid var(--background-modifier-border);
+  border-left: 2px solid rgb(var(--callout-color));
+}
+
+.callout[data-callout="note"],
+.callout[data-callout="info"] {
+  --callout-color: var(--bureau-blue-rgb);
+}
+
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"],
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="bug"],
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="missing"] {
+  --callout-color: var(--bureau-red-rgb);
+}
+
+.callout[data-callout="todo"],
+.callout[data-callout="abstract"],
+.callout[data-callout="summary"],
+.callout[data-callout="tldr"],
+.callout[data-callout="tip"],
+.callout[data-callout="hint"],
+.callout[data-callout="important"],
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"],
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"],
+.callout[data-callout="example"],
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+  --callout-color: var(--bureau-grey-rgb);
+}
+
+.callout-title {
+  font-family: var(--font-monospace);
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Highlights: redaction bars in reading view, revealed on hover, tap or focus. */
+.markdown-rendered mark {
+  background-color: var(--bureau-strong);
+  color: var(--bureau-strong);
+}
+
+.markdown-rendered mark * {
+  color: inherit;
+}
+
+.markdown-rendered mark:hover,
+.markdown-rendered mark:active,
+.markdown-rendered mark:focus {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* Horizontal rule: a hairline with a small red square in the middle. */
+.markdown-rendered hr,
+.markdown-source-view.is-live-preview hr {
+  position: relative;
+  overflow: visible;
+}
+
+.markdown-rendered hr::after,
+.markdown-source-view.is-live-preview hr::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background-color: var(--bureau-red);
+  transform: translate(-50%, -50%);
+}
+
+/* Paper has no hover: print and PDF export show highlights underlined. */
+@media print {
+  mark,
+  .markdown-rendered mark {
+    background-color: transparent;
+    color: inherit;
+    text-decoration: underline;
+  }
+}
