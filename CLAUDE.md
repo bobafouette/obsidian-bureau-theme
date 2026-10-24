@@ -6,8 +6,9 @@ typographic, restrained. Comfortable for hours of reading and writing, not just 
 
 ## Design principle (don't drift from it)
 - **Mostly black and white.** Concrete greys, hairline rules, no shadows, no motion.
-- **Native shapes.** The theme never sets corner radii (no `--*radius*`, no `border-radius`;
-  a test enforces it): Obsidian's rounded UI, on mobile especially, clashed with square overrides.
+- **Native shapes.** The theme sets no corner radii (a test enforces it): Obsidian's rounded UI,
+  on mobile especially, clashed with square overrides. One exception, desktop only
+  (`body:not(.is-mobile)`): tabs and the icons at the top of the sidebars are square.
 - **Two accents, one job each.** Red points inside the vault (internal links, tags, cursor,
   active file and tab, checkboxes). Blue points outside it (web links), plus H2. Neither is
   a large fill, with one deliberate exception: a light red tint behind H1 (not the note title).

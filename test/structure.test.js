@@ -21,12 +21,25 @@ test('fonts', () => {
   assert.equal(body['--font-interface-theme'], body['--font-text-theme']);
 });
 
-test('native corner shapes are left alone', () => {
-  // Obsidian (mobile especially) draws its own rounded UI; square overrides clashed with it.
+test('native corner shapes, except square tabs and sidebar icons on desktop', () => {
+  // Obsidian (mobile especially) draws its own rounded UI; square overrides clashed with
+  // it. The one exception: on desktop, tabs and the icons at the top of the sidebars.
+  const allowed = /^body:not\(\.is-mobile\) (\.workspace-tab-header|\.workspace-tab-header-container|\.nav-header|\.sidebar-toggle-button)\b/;
+  let squared = 0;
   for (const r of rules) {
-    for (const [k] of declarations(r.body)) {
-      assert.ok(!/radius/.test(k), `${r.selector} sets ${k}`);
+    for (const [k, v] of declarations(r.body)) {
+      if (!/radius/.test(k)) continue;
+      for (const sel of r.selector.split(',').map((x) => x.trim())) {
+        assert.match(sel, allowed, `${sel} sets ${k}`);
+      }
+      assert.match(v, /^0(px)?$/, `${r.selector} ${k}`);
+      squared++;
     }
+  }
+  assert.ok(squared > 0, 'desktop tabs and sidebar icons are squared');
+  const sels = rules.filter((r) => declarations(r.body).some(([k]) => k === 'border-radius')).map((r) => r.selector).join(',');
+  for (const s of ['.workspace-tab-header', '.workspace-tab-header-inner', '.workspace-tab-header-container .clickable-icon', '.nav-header .clickable-icon']) {
+    assert.ok(sels.includes(`body:not(.is-mobile) ${s}`), `squares ${s}`);
   }
 });
 

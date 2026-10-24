@@ -198,6 +198,21 @@ body.theme-light {
   border-top: 2px solid var(--bureau-red);
 }
 
+/* Desktop only: square tabs and sidebar icons (mobile keeps its native shapes). */
+body:not(.is-mobile) .workspace-tab-header,
+body:not(.is-mobile) .workspace-tab-header-inner,
+body:not(.is-mobile) .workspace-tab-header-container .clickable-icon,
+body:not(.is-mobile) .nav-header .clickable-icon,
+body:not(.is-mobile) .sidebar-toggle-button .clickable-icon {
+  border-radius: 0;
+}
+
+/* The curved feet Obsidian draws at the bottom corners of the active tab. */
+body:not(.is-mobile) .workspace-tab-header.is-active::before,
+body:not(.is-mobile) .workspace-tab-header.is-active::after {
+  display: none;
+}
+
 .status-bar {
   font-family: var(--font-monospace);
   font-size: var(--font-ui-smaller);
