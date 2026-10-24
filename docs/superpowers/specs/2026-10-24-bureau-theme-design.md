@@ -3,7 +3,7 @@
 ## Intent
 A minimal, futuristic Obsidian theme inspired by Control (Remedy): brutalist, typographic,
 restrained. It has to be comfortable for hours of daily reading and writing, not only good in a
-screenshot. Explicitly not neon, glow, glitch, gradients or rounded "app" chrome.
+screenshot. Explicitly not neon, glow, glitch or gradients.
 
 Success: it feels like the Federal Bureau of Control at a glance, and after a week of use
 nothing about it is tiring or distracting.
@@ -50,7 +50,8 @@ Heading ladder (the title-card look):
 - Inline title: same as H1.
 
 ## Structure
-- Border radius 0 everywhere (buttons, inputs, modals, callouts, tags, code).
+- Corner shapes are Obsidian's own: the theme sets no radius. (Changed after mobile testing:
+  square overrides clashed with the app's rounded mobile UI. Originally: radius 0 everywhere.)
 - No drop shadows; separation comes from hairline rules and the three ink levels.
 - Readable line width stays Obsidian's default; generous paragraph spacing.
 - Active file in the file explorer: the file name turns red. No bar, no filled background.

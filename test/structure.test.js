@@ -21,17 +21,11 @@ test('fonts', () => {
   assert.equal(body['--font-interface-theme'], body['--font-text-theme']);
 });
 
-test('no rounded corners', () => {
-  for (const name of [
-    '--radius-s', '--radius-m', '--radius-l', '--radius-xl', '--tag-radius', '--checkbox-radius',
-    '--callout-radius', '--code-radius', '--button-radius', '--input-radius', '--modal-radius',
-  ]) {
-    assert.ok(name in body, `body declares ${name}`);
-  }
+test('native corner shapes are left alone', () => {
+  // Obsidian (mobile especially) draws its own rounded UI; square overrides clashed with it.
   for (const r of rules) {
-    for (const [k, v] of declarations(r.body)) {
-      if (k.startsWith('--') && /radius/.test(k)) assert.match(v, /^0(px)?$/, `${r.selector} ${k}`);
-      if (k === 'border-radius') assert.match(v, /^0(px)?$/, `${r.selector} border-radius`);
+    for (const [k] of declarations(r.body)) {
+      assert.ok(!/radius/.test(k), `${r.selector} sets ${k}`);
     }
   }
 });

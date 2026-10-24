@@ -5,11 +5,13 @@ A minimal, futuristic theme for people who like Control's look (Remedy): brutali
 typographic, restrained. Comfortable for hours of reading and writing, not just a screenshot.
 
 ## Design principle (don't drift from it)
-- **Mostly black and white.** Concrete greys, hairline rules, square corners, no shadows, no motion.
+- **Mostly black and white.** Concrete greys, hairline rules, no shadows, no motion.
+- **Native shapes.** The theme never sets corner radii (no `--*radius*`, no `border-radius`;
+  a test enforces it): Obsidian's rounded UI, on mobile especially, clashed with square overrides.
 - **Two accents, one job each.** Red points inside the vault (internal links, tags, cursor,
   active file and tab, checkboxes). Blue points outside it (web links), plus H2. Neither is
   a large fill, with one deliberate exception: a light red tint behind H1 and the inline title.
-- Never neon, glow, glitch, gradients or rounded "app" chrome.
+- Never neon, glow, glitch or gradients.
 - Every text colour is at least 4.5:1 on its background in both modes.
 - Spec: `docs/superpowers/specs/2026-10-24-bureau-theme-design.md`.
 

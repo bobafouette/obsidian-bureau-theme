@@ -1,7 +1,7 @@
 # Bureau
 
 A minimal Obsidian theme inspired by the Federal Bureau of Control: brutalist, typographic,
-restrained. Concrete greys, title-card headings, hairline rules, square corners, no glow.
+restrained. Concrete greys, title-card headings, hairline rules, no glow. Corner shapes stay Obsidian's own.
 
 ![Bureau, dark mode](screenshot.png)
 

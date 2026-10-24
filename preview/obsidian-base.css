@@ -17,6 +17,8 @@ body {
   --callout-radius: 4px;
   --radius-s: 4px;
   --code-radius: 4px;
+  --tag-radius: 2em;
+  --checkbox-radius: 4px;
   margin: 0;
   height: 100vh;
   display: flex;
@@ -42,7 +44,7 @@ body {
 .ribbon { width: 44px; background: var(--background-secondary); border-right: 1px solid var(--background-modifier-border); }
 .sidebar { width: 240px; background: var(--background-secondary); border-right: 1px solid var(--background-modifier-border); padding: 12px 8px; }
 .nav-folder-title { color: var(--text-muted); padding: 4px 8px; font-size: 13px; }
-.nav-file-title { color: var(--nav-item-color); padding: 4px 8px 4px 22px; font-size: 13px; border-radius: 8px; }
+.nav-file-title { color: var(--nav-item-color); padding: 4px 8px 4px 22px; font-size: 13px; border-radius: var(--radius-s); }
 .nav-file-title.is-active { background-color: var(--nav-item-background-active); color: var(--nav-item-color-active); }
 .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .workspace-tab-header-container { display: flex; background: var(--background-secondary); border-bottom: 1px solid var(--background-modifier-border); }

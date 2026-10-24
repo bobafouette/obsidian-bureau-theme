@@ -104,7 +104,8 @@ body.theme-light {
 }
 
 /* ------------------------------------------------------------------ structure
-   Poured concrete: no rounded corners, no shadows, hairline rules only. */
+   Poured concrete: no shadows, hairline rules only. Corner shapes stay Obsidian's
+   own (mobile draws rounded UI; square overrides clashed with it). */
 
 body.theme-dark,
 body.theme-light {
@@ -112,23 +113,6 @@ body.theme-light {
   --font-interface-theme: Inter, "Helvetica Neue", Arial, sans-serif;
   --font-monospace-theme: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
 
-  --radius-s: 0;
-  --radius-m: 0;
-  --radius-l: 0;
-  --radius-xl: 0;
-  --tag-radius: 0;
-  --checkbox-radius: 0;
-  --callout-radius: 0;
-  --code-radius: 0;
-  --button-radius: 0;
-  --input-radius: 0;
-  --modal-radius: 0;
-  --clickable-icon-radius: 0;
-  --embed-border-radius: 0;
-  --image-radius: 0;
-  --slider-thumb-radius: 0;
-  --toggle-radius: 0;
-  --toggle-thumb-radius: 0;
 
   --shadow-s: none;
   --shadow-l: none;
