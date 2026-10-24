@@ -7,7 +7,7 @@ const css = readTheme();
 
 // The spec's palette table.
 const SPEC = {
-  '.theme-dark': {
+  'body.theme-dark': {
     '--background-primary': '#0B0B0C',
     '--background-secondary': '#131315',
     '--background-modifier-hover': '#1C1C1F',
@@ -18,7 +18,7 @@ const SPEC = {
     '--bureau-red': '#E0263A',
     '--bureau-blue': '#5B8DBF',
   },
-  '.theme-light': {
+  'body.theme-light': {
     '--background-primary': '#F2F0EB',
     '--background-secondary': '#E8E5DE',
     '--background-modifier-hover': '#DDD9D0',
@@ -32,7 +32,7 @@ const SPEC = {
 };
 
 // Values the implementation had to move away from the spec to meet 4.5:1 contrast.
-const NUDGED = { '.theme-dark': { '--bureau-red': '#E43446' } };
+const NUDGED = { 'body.theme-dark': { '--bureau-red': '#E63D4E' } };
 
 const RED_ROLES = [
   '--link-color', '--link-unresolved-color', '--tag-color', '--caret-color',
@@ -59,6 +59,11 @@ for (const mode of Object.keys(SPEC)) {
     }
   });
 
+  test(`${mode}: red stays readable on the sidebar (active file name)`, () => {
+    const ratio = contrast(vars['--bureau-red'], vars['--background-secondary']);
+    assert.ok(ratio >= 4.5, `${ratio.toFixed(2)}:1`);
+  });
+
   test(`${mode}: accent roles`, () => {
     for (const name of RED_ROLES) assert.equal(vars[name], 'var(--bureau-red)', name);
     for (const name of BLUE_ROLES) assert.equal(vars[name], 'var(--bureau-blue)', name);
@@ -71,3 +76,19 @@ for (const mode of Object.keys(SPEC)) {
     }
   });
 }
+
+// Obsidian's app.css sets many variables on .theme-dark/.theme-light and .is-mobile
+// (one class). Plain `body` (no class) or a bare mode class loses to those, which
+// showed up on mobile as filled tags. Every theme variable sits on body.theme-*.
+test('variables are declared on body.theme-dark / body.theme-light', () => {
+  const { parseRules, declarations } = require('./css');
+  for (const r of parseRules(css)) {
+    if (!declarations(r.body).some(([k]) => k.startsWith('--'))) continue;
+    for (const sel of r.selector.split(',').map((x) => x.trim())) {
+      if (/^(body|\.theme-dark|\.theme-light)$/.test(sel)) assert.fail(`variables on weak selector "${sel}"`);
+    }
+  }
+  const dark = Object.keys(varsFor(css, 'body.theme-dark')).sort();
+  const light = Object.keys(varsFor(css, 'body.theme-light')).sort();
+  assert.deepEqual(light, dark);
+});

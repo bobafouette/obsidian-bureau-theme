@@ -21,13 +21,18 @@ typographic, restrained. Comfortable for hours of reading and writing, not just 
   remapped to blue, red or grey).
 - `==highlights==` are redaction bars in reading view, revealed on hover/tap/focus; readable
   in the editor; underlined in print and PDF export.
-- Dark red is `#E43446`, not the spec's `#E0263A` (that one is 4.22:1 on the dark background).
+- Dark red is `#E63D4E`, not the spec's `#E0263A` (that one is 4.22:1 on the dark background;
+  `#E63D4E` reaches 4.5:1 on the sidebar too, where the active file name is red).
+- Active file: the name turns red (no bar, no fill: on mobile a border became a rounded arc).
+- Tags have no vertical padding and a fixed size, so stamps never overlap the lines around them.
 
 ## Technical constraints
 - One `theme.css`, no build, no `package.json`, no dependencies, nothing external
   (no `@import`, no remote `url()`, no bundled fonts). `manifest.json` has no `id`, no `versions.json`.
 - Accent variables are literal theme tokens, never `--accent-*`, so the user's accent-colour
   setting cannot recolour the theme.
+- Every variable is declared on `body.theme-dark` / `body.theme-light` (a test enforces it):
+  Obsidian sets its own on `.theme-dark` and `.is-mobile`, which beat a plain `body` selector.
 
 ## Tests, CI, release
 - `node --test 'test/*.test.js'` parses `theme.css` (`test/css.js`) and asserts the spec;

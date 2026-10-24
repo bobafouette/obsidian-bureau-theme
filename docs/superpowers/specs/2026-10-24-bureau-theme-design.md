@@ -51,7 +51,8 @@ Heading ladder (the title-card look):
 - Border radius 0 everywhere (buttons, inputs, modals, callouts, tags, code).
 - No drop shadows; separation comes from hairline rules and the three ink levels.
 - Readable line width stays Obsidian's default; generous paragraph spacing.
-- Active file in the file explorer: 2px red bar on the left, text strong. No filled background.
+- Active file in the file explorer: the file name turns red. No bar, no filled background.
+  (Changed after mobile testing: a left bar rendered as a rounded arc on mobile.)
 - Active tab: a 2px red top border.
 - Cursor and text selection: red caret; selection uses a low-alpha red.
 - Status bar and file counts in monospace.
@@ -60,7 +61,8 @@ Heading ladder (the title-card look):
 - **Frontmatter / Properties** read as a case-file header: monospace keys, uppercase muted
   labels, hairline box.
 - **Tags** read as classification stamps: monospace uppercase, 1px red border, red text,
-  transparent background, no `#` hidden (Obsidian default kept).
+  transparent background, no `#` hidden (Obsidian default kept). No vertical padding and a
+  fixed size (also inside headings), so a stamp never overlaps the lines around it.
 - **Callouts** read as Bureau memos: hairline box, 2px left bar in the callout's color,
   uppercase monospace title. Callout colors are remapped to the palette (note/info → blue,
   warning/danger/bug → red, everything else → greys) so no rainbow appears.

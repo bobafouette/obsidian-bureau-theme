@@ -2,9 +2,11 @@
 
 /* ------------------------------------------------------------------ palette
    Mostly black and white. Red points inside the vault (internal links, tags,
-   cursor, active file); blue points outside it (web links) plus H2. */
+   cursor, active file); blue points outside it (web links) plus H2.
+   Every variable sits on body.theme-dark / body.theme-light: Obsidian sets its own
+   on .theme-dark and .is-mobile, which beat a plain `body` selector. */
 
-.theme-dark {
+body.theme-dark {
   /* Ink 0 / 1 / 2, rule */
   --background-primary: #0B0B0C;
   --background-primary-alt: #131315;
@@ -28,15 +30,15 @@
 
   /* Theme tokens */
   --bureau-strong: #FFFFFF;
-  /* Spec #E0263A, lightened to reach 4.5:1 on Ink 0. */
-  --bureau-red: #E43446;
+  /* Spec #E0263A, lightened to reach 4.5:1 on Ink 0 and Ink 1 (sidebar). */
+  --bureau-red: #E63D4E;
   --bureau-blue: #5B8DBF;
-  --bureau-red-rgb: 228, 52, 70;
+  --bureau-red-rgb: 230, 61, 78;
   --bureau-blue-rgb: 91, 141, 191;
   --bureau-grey-rgb: 138, 138, 144;
 }
 
-.theme-light {
+body.theme-light {
   /* Ink 0 (paper) / 1 / 2, rule */
   --background-primary: #F2F0EB;
   --background-primary-alt: #E8E5DE;
@@ -68,9 +70,9 @@
 }
 
 /* Accent roles: literal tokens, so Obsidian's own accent-colour setting cannot
-   turn the theme purple. Declared per mode so they win over the app defaults. */
-.theme-dark,
-.theme-light {
+   turn the theme purple. */
+body.theme-dark,
+body.theme-light {
   --interactive-accent: var(--bureau-red);
   --interactive-accent-hover: var(--bureau-red);
   --text-accent: var(--bureau-red);
@@ -102,7 +104,8 @@
 /* ------------------------------------------------------------------ structure
    Poured concrete: no rounded corners, no shadows, hairline rules only. */
 
-body {
+body.theme-dark,
+body.theme-light {
   --font-text-theme: Inter, "Helvetica Neue", Arial, sans-serif;
   --font-interface-theme: Inter, "Helvetica Neue", Arial, sans-serif;
   --font-monospace-theme: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
@@ -127,6 +130,7 @@ body {
 
   --shadow-s: none;
   --shadow-l: none;
+  --nav-item-background-active: transparent;
   --input-shadow: none;
   --input-shadow-hover: none;
 
@@ -185,12 +189,11 @@ body {
   color: var(--text-muted);
 }
 
-/* Active file: a 2px red bar, no fill. */
+/* Active file: the name itself turns red. No bar, no fill. */
 .nav-file-title.is-active,
 .tree-item-self.is-active {
-  border-left: 2px solid var(--bureau-red);
   background-color: transparent;
-  color: var(--bureau-strong);
+  color: var(--bureau-red);
 }
 
 /* Active tab: a 2px red bar on top. */
@@ -205,13 +208,16 @@ body {
 
 /* ------------------------------------------------------------------ bureau details */
 
-body {
+body.theme-dark,
+body.theme-light {
   /* Tags: classification stamps */
   --tag-background: transparent;
   --tag-background-hover: transparent;
   --tag-border-width: 1px;
   --tag-border-color: var(--bureau-red);
   --tag-border-color-hover: var(--bureau-red);
+  --tag-padding-x: 0.4em;
+  --tag-padding-y: 0;
 
   /* Highlights: readable while editing; redacted in reading view (below) */
   --text-highlight-bg: var(--background-modifier-hover);
@@ -237,10 +243,11 @@ body {
   --graph-text: var(--text-normal);
 }
 
+/* A fixed size (not em) so a tag in a heading stays a small stamp. */
 .tag,
 .cm-hashtag {
   font-family: var(--font-monospace);
-  font-size: 0.8em;
+  font-size: calc(var(--font-text-size) * 0.75);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }

@@ -5,7 +5,7 @@ const { readTheme, stripComments, parseRules, declarations, varsFor } = require(
 
 const css = readTheme();
 const rules = parseRules(css);
-const body = varsFor(css, 'body');
+const body = varsFor(css, 'body.theme-dark');
 
 /** Rules whose selector matches `re`, with their declarations as a map. */
 function find(re) {
@@ -76,10 +76,17 @@ test('headings', () => {
 });
 
 test('active markers', () => {
-  const file = find(/\.nav-file-title\.is-active/).find((r) => r.decl['border-left']);
-  assert.ok(file, 'active file rule with a left border');
-  assert.equal(file.decl['border-left'], '2px solid var(--bureau-red)');
+  // The active file is marked on the text itself: red, no bar, no fill (mobile
+  // draws its own rounded item shapes, a border there turns into an arc).
+  assert.equal(body['--nav-item-background-active'], 'transparent');
+  const file = find(/\.nav-file-title\.is-active/).find((r) => r.decl.color);
+  assert.ok(file, 'active file rule sets color');
+  assert.match(file.selector, /\.tree-item-self\.is-active/);
+  assert.equal(file.decl.color, 'var(--bureau-red)');
   assert.equal(file.decl['background-color'], 'transparent');
+  for (const r of find(/\.nav-file-title\.is-active|\.tree-item-self\.is-active/)) {
+    assert.ok(!Object.keys(r.decl).some((k) => k.startsWith('border')), `${r.selector} draws no border`);
+  }
 
   const tab = find(/\.workspace-tab-header\.is-active/).find((r) => r.decl['border-top']);
   assert.ok(tab, 'active tab rule with a top border');

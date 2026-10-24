@@ -12,8 +12,7 @@ body {
   --nav-item-color: var(--text-muted);
   --nav-item-background-active: var(--background-modifier-hover);
   --callout-color: 8, 109, 221;
-  --tag-background: rgba(138, 92, 245, 0.1);
-  --tag-border-width: 0;
+  --font-text-size: 15px;
   --tag-radius: 2em;
   --callout-radius: 4px;
   --radius-s: 4px;
@@ -27,12 +26,23 @@ body {
   color: var(--text-normal);
   caret-color: var(--caret-color);
 }
+.theme-dark,
+.theme-light {
+  /* Like app.css: these sit on the mode class, so a theme setting them on plain
+     `body` loses (seen on mobile as filled tags). */
+  --tag-background: rgba(138, 92, 245, 0.15);
+  --tag-border-width: 0;
+  --tag-padding-x: 0.65em;
+  --tag-padding-y: 0.25em;
+  --text-highlight-bg: rgba(255, 208, 0, 0.4);
+  --nav-item-background-active: rgba(128, 128, 128, 0.2);
+}
 ::selection { background-color: var(--text-selection); }
 
 .ribbon { width: 44px; background: var(--background-secondary); border-right: 1px solid var(--background-modifier-border); }
 .sidebar { width: 240px; background: var(--background-secondary); border-right: 1px solid var(--background-modifier-border); padding: 12px 8px; }
 .nav-folder-title { color: var(--text-muted); padding: 4px 8px; font-size: 13px; }
-.nav-file-title { color: var(--nav-item-color); padding: 4px 8px 4px 22px; font-size: 13px; border-radius: var(--radius-s); }
+.nav-file-title { color: var(--nav-item-color); padding: 4px 8px 4px 22px; font-size: 13px; border-radius: 8px; }
 .nav-file-title.is-active { background-color: var(--nav-item-background-active); color: var(--nav-item-color-active); }
 .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 .workspace-tab-header-container { display: flex; background: var(--background-secondary); border-bottom: 1px solid var(--background-modifier-border); }
@@ -44,7 +54,7 @@ body {
 .status-bar { position: fixed; right: 0; bottom: 0; padding: 4px 12px; color: var(--text-muted); background: var(--background-secondary); border-top: 1px solid var(--background-modifier-border); }
 
 .inline-title { font-family: var(--font-text); font-size: var(--inline-title-size); font-weight: var(--inline-title-weight); color: var(--inline-title-color); margin: 0 0 16px; }
-.markdown-rendered, .markdown-source-view { font-family: var(--font-text); font-size: 15px; line-height: 1.6; }
+.markdown-rendered, .markdown-source-view { font-family: var(--font-text); font-size: var(--font-text-size); line-height: 1.6; }
 .markdown-rendered p { margin: 0 0 var(--p-spacing); }
 .markdown-rendered h1 { font-size: var(--h1-size); font-weight: var(--h1-weight); color: var(--h1-color); }
 .markdown-rendered h2 { font-size: var(--h2-size); font-weight: var(--h2-weight); color: var(--h2-color); }
@@ -54,7 +64,7 @@ body {
 a.internal-link { color: var(--link-color); text-decoration: underline; }
 a.internal-link.is-unresolved { color: var(--link-unresolved-color); opacity: var(--link-unresolved-opacity); text-decoration-style: var(--link-unresolved-decoration-style); text-decoration-color: var(--link-unresolved-decoration-color); }
 a.external-link { color: var(--link-external-color); text-decoration: underline; }
-.tag { background-color: var(--tag-background); border: var(--tag-border-width) solid var(--tag-border-color); color: var(--tag-color); border-radius: var(--tag-radius); padding: 0.1em 0.5em; text-decoration: none; }
+.tag { background-color: var(--tag-background); border: var(--tag-border-width) solid var(--tag-border-color); color: var(--tag-color); border-radius: var(--tag-radius); padding: var(--tag-padding-y) var(--tag-padding-x); text-decoration: none; }
 mark { background-color: var(--text-highlight-bg); color: var(--text-normal); }
 blockquote { margin: 0 0 var(--p-spacing); padding-left: 16px; border-left: var(--blockquote-border-thickness) solid var(--blockquote-border-color); color: var(--blockquote-color); font-style: var(--blockquote-font-style); }
 hr { border: none; border-top: var(--hr-thickness) solid var(--hr-color); margin: 24px 0; }

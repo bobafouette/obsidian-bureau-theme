@@ -5,7 +5,7 @@ const { readTheme, parseRules, declarations, varsFor } = require('./css');
 
 const css = readTheme();
 const rules = parseRules(css);
-const body = varsFor(css, 'body');
+const body = varsFor(css, 'body.theme-dark');
 
 function find(re, { media = '' } = {}) {
   return rules
@@ -25,7 +25,13 @@ test('tags are stamps', () => {
   assert.equal(body['--tag-background-hover'], 'transparent');
   assert.equal(body['--tag-border-width'], '1px');
   assert.equal(body['--tag-border-color'], 'var(--bureau-red)');
+  // Stamps must fit inside the line box: no vertical padding, and a fixed size so a
+  // tag in a heading does not grow with it.
+  assert.equal(body['--tag-padding-y'], '0');
+  assert.equal(body['--tag-padding-x'], '0.4em');
   const tag = withProp(/\.tag\b/, 'text-transform');
+  assert.match(tag.selector, /\.cm-hashtag/);
+  assert.equal(tag.decl['font-size'], 'calc(var(--font-text-size) * 0.75)');
   assert.equal(tag.decl['font-family'], 'var(--font-monospace)');
   assert.equal(tag.decl['text-transform'], 'uppercase');
 });
