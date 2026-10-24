@@ -1,1 +1,100 @@
 /* Bureau — an Obsidian theme inspired by Control. */
+
+/* ------------------------------------------------------------------ palette
+   Mostly black and white. Red points inside the vault (internal links, tags,
+   cursor, active file); blue points outside it (web links) plus H2. */
+
+.theme-dark {
+  /* Ink 0 / 1 / 2, rule */
+  --background-primary: #0B0B0C;
+  --background-primary-alt: #131315;
+  --background-secondary: #131315;
+  --background-secondary-alt: #131315;
+  --background-modifier-hover: #1C1C1F;
+  --background-modifier-active-hover: #1C1C1F;
+  --background-modifier-border: #2A2A2E;
+  --background-modifier-border-hover: #3A3A3F;
+  --background-modifier-border-focus: #3A3A3F;
+  --background-modifier-form-field: #0B0B0C;
+  --titlebar-background: #131315;
+  --titlebar-background-focused: #131315;
+  --code-background: #1C1C1F;
+
+  /* Text */
+  --text-normal: #D9D9D6;
+  --text-muted: #8A8A90;
+  --text-faint: #8A8A90;
+  --text-on-accent: #0B0B0C;
+
+  /* Theme tokens */
+  --bureau-strong: #FFFFFF;
+  /* Spec #E0263A, lightened to reach 4.5:1 on Ink 0. */
+  --bureau-red: #E43446;
+  --bureau-blue: #5B8DBF;
+  --bureau-red-rgb: 228, 52, 70;
+  --bureau-blue-rgb: 91, 141, 191;
+  --bureau-grey-rgb: 138, 138, 144;
+}
+
+.theme-light {
+  /* Ink 0 (paper) / 1 / 2, rule */
+  --background-primary: #F2F0EB;
+  --background-primary-alt: #E8E5DE;
+  --background-secondary: #E8E5DE;
+  --background-secondary-alt: #E8E5DE;
+  --background-modifier-hover: #DDD9D0;
+  --background-modifier-active-hover: #DDD9D0;
+  --background-modifier-border: #C9C4B8;
+  --background-modifier-border-hover: #B3AD9F;
+  --background-modifier-border-focus: #B3AD9F;
+  --background-modifier-form-field: #F2F0EB;
+  --titlebar-background: #E8E5DE;
+  --titlebar-background-focused: #E8E5DE;
+  --code-background: #DDD9D0;
+
+  /* Text */
+  --text-normal: #1A1A1A;
+  --text-muted: #6B675F;
+  --text-faint: #6B675F;
+  --text-on-accent: #fff;
+
+  /* Theme tokens */
+  --bureau-strong: #000000;
+  --bureau-red: #C2182B;
+  --bureau-blue: #2D5F8F;
+  --bureau-red-rgb: 194, 24, 43;
+  --bureau-blue-rgb: 45, 95, 143;
+  --bureau-grey-rgb: 107, 103, 95;
+}
+
+/* Accent roles: literal tokens, so Obsidian's own accent-colour setting cannot
+   turn the theme purple. Declared per mode so they win over the app defaults. */
+.theme-dark,
+.theme-light {
+  --interactive-accent: var(--bureau-red);
+  --interactive-accent-hover: var(--bureau-red);
+  --text-accent: var(--bureau-red);
+  --text-accent-hover: var(--bureau-red);
+  --text-selection: rgba(var(--bureau-red-rgb), 0.25);
+  --caret-color: var(--bureau-red);
+  --checkbox-color: var(--bureau-red);
+  --checkbox-color-hover: var(--bureau-red);
+  --checkbox-marker-color: var(--background-primary);
+  --nav-item-color-active: var(--bureau-red);
+
+  --link-color: var(--bureau-red);
+  --link-color-hover: var(--bureau-red);
+  --link-unresolved-color: var(--bureau-red);
+  --link-unresolved-opacity: 1;
+  --link-unresolved-decoration-style: dashed;
+  --link-unresolved-decoration-color: var(--bureau-red);
+  --link-external-color: var(--bureau-blue);
+  --link-external-color-hover: var(--bureau-blue);
+  --tag-color: var(--bureau-red);
+  --tag-color-hover: var(--bureau-red);
+
+  --h1-color: var(--bureau-strong);
+  --h2-color: var(--bureau-blue);
+  --h3-color: var(--bureau-strong);
+  --bold-color: var(--bureau-strong);
+}
