@@ -16,12 +16,12 @@ Mostly black and white, with two accents that each have one job:
 - **Red points inside your vault:** internal links, tags, the cursor, the active file and tab, checkboxes.
 - **Blue points outside it:** web links. Blue is also used for H2 headings.
 
-Neither accent is used as a large fill. Unresolved links are red with a dashed underline.
+Apart from a light tint behind H1, neither accent is used as a large fill. Unresolved links are red with a dashed underline.
 Callouts are remapped to the palette: `note`/`info` blue, warnings and errors red, everything else grey.
 
 ## Details
 
-- **Headings:** H1 and the note title are uppercase title cards; H2 is uppercase and blue;
+- **Headings:** H1 and the note title are uppercase title cards on a light red tint; H2 is uppercase and blue;
   H4–H6 are small monospace labels.
 - **Properties** read as a case-file header; **tags** as classification stamps;
   **callouts** as memos.

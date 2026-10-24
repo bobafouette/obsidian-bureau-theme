@@ -8,7 +8,7 @@ typographic, restrained. Comfortable for hours of reading and writing, not just 
 - **Mostly black and white.** Concrete greys, hairline rules, square corners, no shadows, no motion.
 - **Two accents, one job each.** Red points inside the vault (internal links, tags, cursor,
   active file and tab, checkboxes). Blue points outside it (web links), plus H2. Neither is
-  ever a large fill.
+  a large fill, with one deliberate exception: a light red tint behind H1 and the inline title.
 - Never neon, glow, glitch, gradients or rounded "app" chrome.
 - Every text colour is at least 4.5:1 on its background in both modes.
 - Spec: `docs/superpowers/specs/2026-10-24-bureau-theme-design.md`.
@@ -16,7 +16,8 @@ typographic, restrained. Comfortable for hours of reading and writing, not just 
 ## What the theme does (v0.0.1)
 - Dark ("the Oldest House") and light ("paper") palettes in `body.theme-dark` / `body.theme-light`;
   theme tokens `--bureau-strong`, `--bureau-red`, `--bureau-blue` and their `-rgb` forms.
-- Title-card headings (H1, inline title, H2 uppercase), H4–H6 monospace labels.
+- Title-card headings (H1, inline title, H2 uppercase), H4–H6 monospace labels. H1 and the
+  inline title sit on `--bureau-h1-background` (red at 14% dark / 10% light).
 - Properties as a case-file header, tags as stamps, callouts as memos (every built-in type
   remapped to blue, red or grey).
 - `==highlights==` are redaction bars in reading view, revealed on hover/tap/focus; readable

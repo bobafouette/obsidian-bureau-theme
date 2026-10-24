@@ -1,7 +1,7 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { readTheme, stripComments, parseRules, declarations, varsFor } = require('./css');
+const { readTheme, stripComments, parseRules, declarations, varsFor, contrast } = require('./css');
 
 const css = readTheme();
 const rules = parseRules(css);
@@ -91,4 +91,26 @@ test('active markers', () => {
   const tab = find(/\.workspace-tab-header\.is-active/).find((r) => r.decl['border-top']);
   assert.ok(tab, 'active tab rule with a top border');
   assert.equal(tab.decl['border-top'], '2px solid var(--bureau-red)');
+});
+
+test('H1 sits on a light red tint, still readable', () => {
+  const { hexToRgb } = require('./css');
+  const h1 = find(/\.markdown-rendered h1\b/).find((r) => r.decl['background-color']);
+  assert.ok(h1, 'an H1 rule sets background-color');
+  for (const s of ['.inline-title', '.HyperMD-header-1']) assert.ok(h1.selector.includes(s), s);
+  assert.equal(h1.decl['background-color'], 'var(--bureau-h1-background)');
+
+  for (const mode of ['body.theme-dark', 'body.theme-light']) {
+    const v = varsFor(css, mode);
+    const m = /^rgba\(var\(--bureau-red-rgb\), (0?\.\d+)\)$/.exec(v['--bureau-h1-background'] || '');
+    assert.ok(m, `${mode} --bureau-h1-background is a red rgba`);
+    const alpha = Number(m[1]);
+    assert.ok(alpha > 0 && alpha <= 0.2, `${mode} alpha ${alpha} is light`);
+    // Blend the tint over the page and check the heading text on the result.
+    const red = v['--bureau-red-rgb'].split(',').map(Number);
+    const bg = hexToRgb(v['--background-primary']);
+    const mixed = '#' + bg.map((c, i) => Math.round(c * (1 - alpha) + red[i] * alpha).toString(16).padStart(2, '0')).join('');
+    const ratio = contrast(v['--bureau-strong'], mixed);
+    assert.ok(ratio >= 7, `${mode} H1 text on tint ${mixed} is ${ratio.toFixed(2)}:1`);
+  }
 });

@@ -36,6 +36,7 @@ body.theme-dark {
   --bureau-red-rgb: 230, 61, 78;
   --bureau-blue-rgb: 91, 141, 191;
   --bureau-grey-rgb: 138, 138, 144;
+  --bureau-h1-background: rgba(var(--bureau-red-rgb), 0.14);
 }
 
 body.theme-light {
@@ -67,6 +68,7 @@ body.theme-light {
   --bureau-red-rgb: 194, 24, 43;
   --bureau-blue-rgb: 45, 95, 143;
   --bureau-grey-rgb: 107, 103, 95;
+  --bureau-h1-background: rgba(var(--bureau-red-rgb), 0.1);
 }
 
 /* Accent roles: literal tokens, so Obsidian's own accent-colour setting cannot
@@ -167,6 +169,16 @@ body.theme-light {
 .inline-title {
   padding-bottom: 0.3em;
   border-bottom: 1px solid var(--background-modifier-border);
+}
+
+/* Top-level headings sit on a light red tint: the one place red is a fill. */
+.markdown-rendered h1,
+.inline-title,
+.HyperMD-header-1 {
+  background-color: var(--bureau-h1-background);
+  padding-top: 0.15em;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
 }
 
 .markdown-rendered h2,
