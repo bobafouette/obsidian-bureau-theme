@@ -14,7 +14,7 @@ typographic, restrained. Comfortable for hours of reading and writing, not just 
 - Spec: `docs/superpowers/specs/2026-10-24-bureau-theme-design.md`.
 
 ## What the theme does (v0.0.1)
-- Dark ("the Oldest House") and light ("paper") palettes in `.theme-dark` / `.theme-light`;
+- Dark ("the Oldest House") and light ("paper") palettes in `body.theme-dark` / `body.theme-light`;
   theme tokens `--bureau-strong`, `--bureau-red`, `--bureau-blue` and their `-rgb` forms.
 - Title-card headings (H1, inline title, H2 uppercase), H4–H6 monospace labels.
 - Properties as a case-file header, tags as stamps, callouts as memos (every built-in type
