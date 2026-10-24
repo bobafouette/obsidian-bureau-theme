@@ -87,12 +87,16 @@ test('active markers', () => {
   assert.equal(tab.decl['border-top'], '2px solid var(--bureau-red)');
 });
 
-test('H1 sits on a light red tint, still readable', () => {
+test('H1 sits on a light red tint that ends with the text, still readable', () => {
   const { hexToRgb } = require('./css');
   const h1 = find(/\.markdown-rendered h1\b/).find((r) => r.decl['background-color']);
   assert.ok(h1, 'an H1 rule sets background-color');
-  for (const s of ['.inline-title', '.HyperMD-header-1']) assert.ok(h1.selector.includes(s), s);
+  assert.ok(h1.selector.includes('.HyperMD-header-1'), 'editor H1 too');
+  assert.ok(!find(/\.inline-title/).some((r) => r.decl['background-color']), 'the note title has no tint');
   assert.equal(h1.decl['background-color'], 'var(--bureau-h1-background)');
+  // The tint hugs the text, with room on the left.
+  assert.equal(h1.decl.width, 'fit-content');
+  assert.equal(h1.decl['padding-left'], '0.6em');
 
   for (const mode of ['body.theme-dark', 'body.theme-light']) {
     const v = varsFor(css, mode);

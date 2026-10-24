@@ -21,7 +21,7 @@ Callouts are remapped to the palette: `note`/`info` blue, warnings and errors re
 
 ## Details
 
-- **Headings:** H1 and the note title are uppercase title cards on a light red tint; H2 is uppercase and blue;
+- **Headings:** H1 and the note title are uppercase title cards, H1 on a light red tint that ends with the text; H2 is uppercase and blue;
   H4–H6 are small monospace labels.
 - **Properties** read as a case-file header; **tags** as classification stamps;
   **callouts** as memos.

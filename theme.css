@@ -155,14 +155,15 @@ body.theme-light {
   border-bottom: 1px solid var(--background-modifier-border);
 }
 
-/* Top-level headings sit on a light red tint: the one place red is a fill. */
+/* H1 sits on a light red tint that ends with the text: the one place red is a
+   fill. The note title (inline title) keeps the plain title-card look. */
 .markdown-rendered h1,
-.inline-title,
 .HyperMD-header-1 {
+  width: fit-content;
   background-color: var(--bureau-h1-background);
   padding-top: 0.15em;
-  padding-left: 0.3em;
-  padding-right: 0.3em;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
 }
 
 .markdown-rendered h2,

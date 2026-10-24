@@ -31,7 +31,7 @@ Mostly black and white. Two accents, each with one job:
 
 Rule of thumb: **red points inside the vault, blue points outside it** (plus one heading level).
 Neither accent is used as a large fill; red is at most a 2px bar or a stamp border, with one
-deliberate exception added later: a light red tint behind H1 and the inline title. Exact
+deliberate exception added later: a light red tint behind H1 (not the note title). Exact
 hex values may be nudged during implementation to keep body-text contrast at least 4.5:1
 (WCAG AA) on its background.
 
@@ -43,7 +43,8 @@ Font stacks (all overridable through Obsidian's own font settings):
 
 Heading ladder (the title-card look):
 - H1: uppercase, weight 800, letter-spacing 0.08em, text strong, a 1px rule below, on a light
-  red tint (`rgba(red, 0.14)` dark, `0.1` light; heading text stays at least 7:1).
+  red tint (`rgba(red, 0.14)` dark, `0.1` light; heading text stays at least 7:1) that is as
+  wide as the text, with 0.6em padding each side. The inline title has no tint.
 - H2: uppercase, weight 700, letter-spacing 0.06em, **blue**.
 - H3: weight 700, text strong, normal case.
 - H4–H6: monospace, uppercase, small, muted (they read as file labels).
