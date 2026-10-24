@@ -98,3 +98,107 @@
   --h3-color: var(--bureau-strong);
   --bold-color: var(--bureau-strong);
 }
+
+/* ------------------------------------------------------------------ structure
+   Poured concrete: no rounded corners, no shadows, hairline rules only. */
+
+body {
+  --font-text-theme: Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-interface-theme: Inter, "Helvetica Neue", Arial, sans-serif;
+  --font-monospace-theme: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-s: 0;
+  --radius-m: 0;
+  --radius-l: 0;
+  --radius-xl: 0;
+  --tag-radius: 0;
+  --checkbox-radius: 0;
+  --callout-radius: 0;
+  --code-radius: 0;
+  --button-radius: 0;
+  --input-radius: 0;
+  --modal-radius: 0;
+  --clickable-icon-radius: 0;
+  --embed-border-radius: 0;
+  --image-radius: 0;
+  --slider-thumb-radius: 0;
+  --toggle-radius: 0;
+  --toggle-thumb-radius: 0;
+
+  --shadow-s: none;
+  --shadow-l: none;
+  --input-shadow: none;
+  --input-shadow-hover: none;
+
+  --p-spacing: 1.25rem;
+
+  /* Title-card heading ladder */
+  --h1-weight: 800;
+  --h2-weight: 700;
+  --h3-weight: 700;
+  --h4-weight: 500;
+  --h5-weight: 500;
+  --h6-weight: 500;
+  --h1-size: 2em;
+  --h2-size: 1.4em;
+  --h3-size: 1.2em;
+  --h4-size: 0.85em;
+  --h5-size: 0.8em;
+  --h6-size: 0.75em;
+  --inline-title-weight: 800;
+  --inline-title-size: 2em;
+  --inline-title-color: var(--h1-color);
+}
+
+/* H1 and the inline title: the full-screen title card. */
+.markdown-rendered h1,
+.inline-title,
+.HyperMD-header-1,
+.HyperMD-header-1 .cm-header {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.markdown-rendered h1,
+.inline-title {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.markdown-rendered h2,
+.HyperMD-header-2,
+.HyperMD-header-2 .cm-header {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* H4-H6 read as file labels. */
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6,
+.HyperMD-header-4 .cm-header,
+.HyperMD-header-5 .cm-header,
+.HyperMD-header-6 .cm-header {
+  font-family: var(--font-monospace);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+/* Active file: a 2px red bar, no fill. */
+.nav-file-title.is-active,
+.tree-item-self.is-active {
+  border-left: 2px solid var(--bureau-red);
+  background-color: transparent;
+  color: var(--bureau-strong);
+}
+
+/* Active tab: a 2px red bar on top. */
+.workspace-tab-header.is-active {
+  border-top: 2px solid var(--bureau-red);
+}
+
+.status-bar {
+  font-family: var(--font-monospace);
+  font-size: var(--font-ui-smaller);
+}
