@@ -266,6 +266,15 @@ body.theme-light {
   letter-spacing: 0.06em;
 }
 
+/* Cursor: a block, not a stick. Translucent red, so the character under it stays
+   readable (at least 6:1 in both modes). */
+.cm-editor .cm-cursor {
+  border-left: none;
+  margin-left: 0;
+  width: 0.6em;
+  background-color: rgba(var(--bureau-red-rgb), 0.5);
+}
+
 /* Properties: a case-file header. */
 .metadata-container {
   border: 1px solid var(--background-modifier-border);
