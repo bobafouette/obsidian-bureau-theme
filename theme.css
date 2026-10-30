@@ -273,15 +273,6 @@ body.theme-light {
   caret-shape: block;
 }
 
-/* Cursors CodeMirror draws itself (e.g. extra cursors in a multi-selection):
-   translucent red, so the character under them stays readable (at least 6:1). */
-.cm-editor .cm-cursor {
-  border-left: none;
-  margin-left: 0;
-  width: 0.6em;
-  background-color: rgba(var(--bureau-red-rgb), 0.5);
-}
-
 /* Properties: a case-file header. */
 .metadata-container {
   border: 1px solid var(--background-modifier-border);

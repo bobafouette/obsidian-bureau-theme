@@ -113,15 +113,7 @@ test('graph', () => {
   assert.equal(body['--graph-line'], 'var(--background-modifier-border)');
 });
 
-test('the cursor is a translucent red block', () => {
-  const cursor = withProp(/\.cm-cursor\b/, 'background-color');
-  assert.equal(cursor.decl['border-left'], 'none');
-  assert.equal(cursor.decl.width, '0.6em');
-  // Translucent, so the character under the block stays readable.
-  assert.equal(cursor.decl['background-color'], 'rgba(var(--bureau-red-rgb), 0.5)');
-});
-
-test('the native caret is a block too', () => {
+test('the cursor is a block', () => {
   // Obsidian draws its editor caret natively; only caret-shape can widen it.
   const caret = withProp(/\.cm-content\b/, 'caret-shape');
   assert.equal(caret.decl['caret-shape'], 'block');

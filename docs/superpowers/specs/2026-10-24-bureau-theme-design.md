@@ -60,7 +60,7 @@ Heading ladder (the title-card look):
 - Active file in the file explorer: the file name turns red. No bar, no filled background.
   (Changed after mobile testing: a left bar rendered as a rounded arc on mobile.)
 - Active tab: a 2px red top border.
-- Cursor and text selection: a translucent red block cursor (red at 50%, not a stick); selection uses a low-alpha red.
+- Cursor and text selection: a red block cursor (`caret-shape: block`, not a stick); selection uses a low-alpha red.
 - Status bar and file counts in monospace.
 
 ## Bureau details (used sparingly)
