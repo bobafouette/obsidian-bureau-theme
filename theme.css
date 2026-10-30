@@ -266,8 +266,15 @@ body.theme-light {
   letter-spacing: 0.06em;
 }
 
-/* Cursor: a block, not a stick. Translucent red, so the character under it stays
-   readable (at least 6:1 in both modes). */
+/* Cursor: a block, not a stick. Obsidian draws its editor caret natively, which
+   only caret-shape can widen (Chromium 144+; elsewhere it stays a red stick).
+   Chromium draws the block translucent, so the character under it stays readable. */
+.cm-editor .cm-content {
+  caret-shape: block;
+}
+
+/* Cursors CodeMirror draws itself (e.g. extra cursors in a multi-selection):
+   translucent red, so the character under them stays readable (at least 6:1). */
 .cm-editor .cm-cursor {
   border-left: none;
   margin-left: 0;

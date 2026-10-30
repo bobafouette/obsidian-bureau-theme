@@ -120,3 +120,9 @@ test('the cursor is a translucent red block', () => {
   // Translucent, so the character under the block stays readable.
   assert.equal(cursor.decl['background-color'], 'rgba(var(--bureau-red-rgb), 0.5)');
 });
+
+test('the native caret is a block too', () => {
+  // Obsidian draws its editor caret natively; only caret-shape can widen it.
+  const caret = withProp(/\.cm-content\b/, 'caret-shape');
+  assert.equal(caret.decl['caret-shape'], 'block');
+});
