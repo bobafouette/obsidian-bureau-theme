@@ -112,3 +112,9 @@ test('graph', () => {
   assert.equal(body['--graph-node-tag'], 'var(--bureau-red)');
   assert.equal(body['--graph-line'], 'var(--background-modifier-border)');
 });
+
+test('the cursor is a block', () => {
+  // Obsidian draws its editor caret natively; only caret-shape can widen it.
+  const caret = withProp(/\.cm-content\b/, 'caret-shape');
+  assert.equal(caret.decl['caret-shape'], 'block');
+});

@@ -266,6 +266,13 @@ body.theme-light {
   letter-spacing: 0.06em;
 }
 
+/* Cursor: a block, not a stick. Obsidian draws its editor caret natively, which
+   only caret-shape can widen (Chromium 144+; elsewhere it stays a red stick).
+   Chromium draws the block translucent, so the character under it stays readable. */
+.cm-editor .cm-content {
+  caret-shape: block;
+}
+
 /* Properties: a case-file header. */
 .metadata-container {
   border: 1px solid var(--background-modifier-border);

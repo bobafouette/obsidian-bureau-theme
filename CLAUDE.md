@@ -28,6 +28,8 @@ typographic, restrained. Comfortable for hours of reading and writing, not just 
   in the editor; underlined in print and PDF export.
 - Dark red is `#E63D4E`, not the spec's `#E0263A` (that one is 4.22:1 on the dark background;
   `#E63D4E` reaches 4.5:1 on the sidebar too, where the active file name is red).
+- Cursor: a red block, not a stick. Obsidian's editor caret is native, so `caret-shape: block`
+  on `.cm-editor .cm-content` (Chromium 144+ only; older Obsidian and iOS keep a red stick).
 - Active file: the name turns red (no bar, no fill: on mobile a border became a rounded arc).
 - Tags have no vertical padding and a fixed size, so stamps never overlap the lines around them.
 
